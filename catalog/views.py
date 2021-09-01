@@ -38,3 +38,8 @@ def post_edit(request, pk):
      else:
          form = PostForm(instance=post)
      return render(request, 'catalog/post_edit.html', {'form': form})
+
+def post_delete(request, pk):
+    post = Post.objects.get(pk=pk)
+    post.delete()
+    return post_list(request)
